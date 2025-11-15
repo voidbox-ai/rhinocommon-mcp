@@ -1,0 +1,35 @@
+# RhinoCommon Scraper Configuration
+
+rhino:
+  versions:
+    - "7"
+    - "8"
+  
+  namespaces:
+    - "rhino"
+    - "rhino.geometry"
+    - "rhino.docobjects"
+    - "rhino.commands"
+    - "rhino.input"
+    - "rhino.input.custom"
+    - "rhino.display"
+    - "rhino.fileio"
+    - "rhino.render"
+    - "rhino.plugins"
+
+scraper:
+  delay: 0.5  # seconds between requests
+  timeout: 10  # seconds
+  max_retries: 3
+  user_agent: "RhinoCommon-MCP-Scraper/1.0"
+
+output:
+  format: "json"
+  indent: 2
+  create_markdown: true
+  create_index: true
+
+xml_paths:
+  windows: "C:\\Program Files\\Rhino 8\\System\\RhinoCommon.xml"
+  mac: "/Applications/Rhino 8.app/Contents/Frameworks/RhinoCommon.xml"
+  linux: null

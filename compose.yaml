@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: scraper
+    container_name: rhinocommon-scraper
+    volumes:
+      - ./docs:/app/docs
+      - ./scraper:/app/scraper
+    environment:
+      - RHINO_VERSION=8
+      - OUTPUT_DIR=/app/docs
+    command: python scraper/scraper.py --version 8
+    profiles:
+      - scraper
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: server
+    container_name: rhinocommon-mcp-server
+    volumes:
+      - ./docs:/app/docs:ro
+      - ./server:/app/server
+    stdin_open: true
+    tty: true
+    command: python server/mcp_server.py
+    profiles:
+      - server

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "rhinocommon": {
+      "command": "python",
+      "args": ["/ABSOLUTE/PATH/TO/rhinocommon-mcp/server/mcp_server.py"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}
