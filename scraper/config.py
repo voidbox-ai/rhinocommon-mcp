@@ -12,8 +12,8 @@ SUPPORTED_VERSIONS = ["7", "8"]
 DEFAULT_VERSION = "8"
 
 # API endpoints
-# https://developer.rhino3d.com/api/rhinocommon/
-API_BASE_URL = "https://mcneel-apidocs.herokuapp.com/api/rhinocommon/"
+API_BASE_URL = "https://developer.rhino3d.com/api/rhinocommon/"
+# API_BASE_URL = "https://mcneel-apidocs.herokuapp.com/api/rhinocommon/"
 
 # Namespaces to scrape
 NAMESPACES = [

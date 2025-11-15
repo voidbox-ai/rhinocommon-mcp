@@ -8,31 +8,50 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project structure
-COPY . .
-
 # ============================================
 # Scraper stage
 # ============================================
 FROM base as scraper
 
-WORKDIR /app/scraper
+WORKDIR /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy scraper files and install dependencies
+COPY scraper/requirements.txt ./scraper/
+RUN pip install --no-cache-dir -r scraper/requirements.txt
+
+# Copy all scraper files
+COPY scraper/ ./scraper/
+
+# Create docs directory
+RUN mkdir -p /app/docs
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
-ENTRYPOINT ["python", "scraper.py"]
+WORKDIR /app/scraper
+
+CMD ["/bin/bash"]
 
 # ============================================
 # Server stage
 # ============================================
 FROM base as server
 
-WORKDIR /app/server
+WORKDIR /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy server files and install dependencies
+COPY server/requirements.txt ./server/
+RUN pip install --no-cache-dir -r server/requirements.txt
+
+# Copy all server files
+COPY server/ ./server/
+
+# Create docs directory
+RUN mkdir -p /app/docs
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
-ENTRYPOINT ["python", "mcp_server.py"]
+WORKDIR /app/server
+
+CMD ["/bin/bash"]

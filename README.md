@@ -89,13 +89,9 @@ Claude: search_rhinocommon("NurbsSurface") 호출
 }
 ```
 
-## 🤝 기여
-
-Issue와 Pull Request를 환영합니다!
-
 ## 📄 라이선스
 
-MIT License
+Apache 2.0 License
 
 ## 🔗 관련 링크
 
